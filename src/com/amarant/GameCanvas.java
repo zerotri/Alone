@@ -44,6 +44,7 @@ public class GameCanvas extends Canvas implements Runnable {
 		}
 	}
 
+	@SuppressWarnings("static-access")
 	public void run() {
 		while (true) {
 			long beginTime = System.currentTimeMillis();
