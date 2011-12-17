@@ -10,7 +10,9 @@ public class GameCanvas extends Canvas implements Runnable {
 	int height = 600;
 
 	public long period = 10;
-
+	
+	private static final long serialVersionUID = 42L;
+	
 	public BufferStrategy buf;
 	public Graphics g;
 
@@ -56,6 +58,7 @@ public class GameCanvas extends Canvas implements Runnable {
 			long sleepTime = period - timeTaken;
 
 			try {
+				/* see http://stackoverflow.com/a/405348 for explanation of why this is wrong */
 				t.sleep(sleepTime);
 			}
 			catch (Exception e) {
