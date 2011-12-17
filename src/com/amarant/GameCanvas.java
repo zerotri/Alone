@@ -6,22 +6,22 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
 public class GameCanvas extends Canvas implements Runnable {
+	private static final long serialVersionUID = 1L;
 	int width = 800;
 	int height = 600;
-	
 	public long period = 10;
+	private Level level;
 	
 	public BufferStrategy buf;
 	public Graphics g;
-	
 	private Thread t;
 	
 	public GameCanvas() {
 		this.setIgnoreRepaint(true);
 		this.setBounds(0, 0, width, height);
 		this.setBackground(Color.WHITE);
-		
 		this.setVisible(true);
+		level = new Level("Start.lev");
 	}
 	
 	public void addNotify() {
@@ -62,7 +62,7 @@ public class GameCanvas extends Canvas implements Runnable {
 	
 	public void Update(){
 		// Game logic goes here
-		
+		level.tick();
 	}
 	
 	public void Render(){
@@ -72,8 +72,7 @@ public class GameCanvas extends Canvas implements Runnable {
 		g.fillRect(0, 0, width, height);
 		
 		// Paint stuff
-		
-		
+		level.Render(g);
 	}
 	
 	public void Draw(){

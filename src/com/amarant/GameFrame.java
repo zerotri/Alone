@@ -14,6 +14,7 @@ public class GameFrame {
 		
 		frame.setIgnoreRepaint(true);
 		frame.setBounds(0, 0, width, height);
+		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		GameCanvas game = new GameCanvas();
