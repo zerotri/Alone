@@ -2,7 +2,10 @@ package com.amarant;
 
 import javax.swing.JFrame;
 
-
+/**
+ * @author blacRose, virodoran, zerotri
+ *
+ */
 public class GameFrame {
 	
 	public static void main(String args[]){
