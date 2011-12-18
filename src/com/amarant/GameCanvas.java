@@ -11,7 +11,7 @@ public class GameCanvas extends Canvas implements Runnable {
 	int height = 600;
 	public long period = 10;
 	private Level level;
-	
+
 	public BufferStrategy buf;
 	public Graphics g;
 	private Thread t;
@@ -21,7 +21,7 @@ public class GameCanvas extends Canvas implements Runnable {
 		this.setBounds(0, 0, width, height);
 		this.setBackground(Color.WHITE);
 		this.setVisible(true);
-		level = new Level("Start.lev");
+		level = new Level("start");
 	}
 
 	public void addNotify() {
@@ -37,8 +37,7 @@ public class GameCanvas extends Canvas implements Runnable {
 			t = new Thread(this);
 			try {
 				t.start();
-			}
-			catch (Exception e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
@@ -57,23 +56,25 @@ public class GameCanvas extends Canvas implements Runnable {
 			long sleepTime = period - timeTaken;
 
 			try {
-				/* see http://stackoverflow.com/a/405348 for explanation of why this is wrong */
+				/*
+				 * see http://stackoverflow.com/a/405348 for explanation of why
+				 * this is wrong
+				 */
 				t.sleep(sleepTime);
-			}
-			catch (Exception e) {
+			} catch (Exception e) {
 
 			}
 
 		}
 	}
 
-	public void Update(){
+	public void Update() {
 		// Game logic goes here
 		level.tick();
 
 	}
 
-	public void Render(){
+	public void Render() {
 		// Draws to the back buffer
 		g = buf.getDrawGraphics();
 		g.setColor(Color.white);
@@ -83,8 +84,8 @@ public class GameCanvas extends Canvas implements Runnable {
 		level.Render(g);
 	}
 
-	public void Draw(){
-		if (!buf.contentsLost()){
+	public void Draw() {
+		if (!buf.contentsLost()) {
 			buf.show();
 		}
 
@@ -92,7 +93,5 @@ public class GameCanvas extends Canvas implements Runnable {
 			g.dispose();
 		}
 	}
-
-
 
 }
