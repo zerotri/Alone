@@ -81,7 +81,7 @@ public class GameCanvas extends Canvas implements Runnable {
 		g.fillRect(0, 0, width, height);
 
 		// Paint stuff
-		level.Render(g);
+		level.render(g);
 	}
 
 	public void Draw() {

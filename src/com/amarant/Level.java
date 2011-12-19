@@ -1,6 +1,5 @@
 package com.amarant;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
@@ -15,6 +14,7 @@ public class Level {
 
 	public Level(String name) {
 		// Load level from file "name"
+		new TexturePack();
 		loadLevel(name);
 		System.out.println("Level loaded");
 	}
@@ -24,12 +24,11 @@ public class Level {
 		// yMod = (yMod + 1) % 30;
 	}
 
-	public void Render(Graphics g) {
+	public void render(Graphics g) {
 		for (int x = 0; x < gridwidth; x++) {
 			for (int y = 0; y < gridheight; y++) {
-				g.setColor(new Color(grid[x * gridwidth + y].getType(), true));
-				// g.fillRect((x + xMod) * 16, (y + yMod) * 20, x + 20, y + 20);
-				g.drawImage(grid[x * gridwidth + y].getImage(), (x + xMod) * 20, (y + yMod) * 20, null);
+				g.drawImage(grid[x * gridwidth + y].getImage(), (x + xMod) * 32, (y + yMod) * 32, null);
+
 			}
 		}
 	}
