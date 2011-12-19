@@ -1,9 +1,6 @@
 package com.amarant;
 
 import java.awt.Image;
-import java.awt.image.BufferedImage;
-
-import javax.imageio.ImageIO;
 
 public class Block {
 
