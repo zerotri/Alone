@@ -20,16 +20,16 @@ public class Level {
 	}
 
 	public void tick() {
-		xMod = (xMod + 1) % 30;
-		yMod = (yMod + 1) % 30;
+		// xMod = (xMod + 1) % 30;
+		// yMod = (yMod + 1) % 30;
 	}
 
 	public void Render(Graphics g) {
 		for (int x = 0; x < gridwidth; x++) {
 			for (int y = 0; y < gridheight; y++) {
 				g.setColor(new Color(grid[x * gridwidth + y].getType(), true));
-				g.fillRect((x + xMod) * 20, (y + yMod) * 20, x + 20, y + 20);
-
+				// g.fillRect((x + xMod) * 16, (y + yMod) * 20, x + 20, y + 20);
+				g.drawImage(grid[x * gridwidth + y].getImage(), (x + xMod) * 20, (y + yMod) * 20, null);
 			}
 		}
 	}
