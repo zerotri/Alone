@@ -9,7 +9,7 @@ public class GameCanvas extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
 	int width = 800;
 	int height = 600;
-	public long period = 10;
+	public long period = 100;
 	private Level level;
 
 	public BufferStrategy buf;

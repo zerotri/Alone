@@ -10,6 +10,8 @@ public class Level {
 	private Block[] grid;
 	private int gridwidth;
 	private int gridheight;
+	private int xMod = 0;
+	private int yMod = 0;
 
 	public Level(String name) {
 		// Load level from file "name"
@@ -18,13 +20,15 @@ public class Level {
 	}
 
 	public void tick() {
-
+		xMod = (xMod + 1) % 30;
+		yMod = (yMod + 1) % 30;
 	}
 
 	public void Render(Graphics g) {
 		for (int x = 0; x < gridwidth; x++) {
 			for (int y = 0; y < gridheight; y++) {
-				g.setColor(new Color(grid[x * gridwidth + y].getType()));
+				g.setColor(new Color(grid[x * gridwidth + y].getType(), true));
+				g.fillRect((x + xMod) * 20, (y + yMod) * 20, x + 20, y + 20);
 
 			}
 		}

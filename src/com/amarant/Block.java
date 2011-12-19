@@ -5,6 +5,7 @@ public class Block {
 
 	public Block(int type) {
 		this.type = type;
+
 	}
 
 	public int getType() {
