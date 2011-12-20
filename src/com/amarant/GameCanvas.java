@@ -9,8 +9,9 @@ public class GameCanvas extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
 	int width = 800;
 	int height = 600;
-	public long period = 100;
+	public long period = 20;
 	private Level level;
+	private InputHandler inputHandler;
 
 	public BufferStrategy buf;
 	public Graphics g;
@@ -22,6 +23,8 @@ public class GameCanvas extends Canvas implements Runnable {
 		this.setBackground(Color.WHITE);
 		this.setVisible(true);
 		level = new Level("start");
+		inputHandler = new InputHandler();
+		addKeyListener(inputHandler);
 	}
 
 	public void addNotify() {
@@ -70,7 +73,7 @@ public class GameCanvas extends Canvas implements Runnable {
 
 	public void Update() {
 		// Game logic goes here
-		level.tick();
+		level.tick(inputHandler.keys);
 
 	}
 

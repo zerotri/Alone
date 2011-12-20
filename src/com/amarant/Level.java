@@ -1,7 +1,9 @@
 package com.amarant;
 
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 
@@ -9,19 +11,40 @@ public class Level {
 	private Block[] grid;
 	private int gridwidth;
 	private int gridheight;
-	private int xMod = 0;
-	private int yMod = 0;
+	private int xMod;
+	private int yMod;
+	private boolean jumping;
+	private int jumpHeight;
 
 	public Level(String name) {
 		// Load level from file "name"
+		xMod = 0;
+		yMod = 0;
+		jumping = false;
 		new TexturePack();
 		loadLevel(name);
 		System.out.println("Level loaded");
 	}
 
-	public void tick() {
-		// xMod = (xMod + 1) % 30;
-		// yMod = (yMod + 1) % 30;
+	public void tick(boolean keys[]) {
+		boolean left = keys[KeyEvent.VK_LEFT];
+		boolean right = keys[KeyEvent.VK_RIGHT];
+		boolean up = keys[KeyEvent.VK_UP];
+		boolean down = keys[KeyEvent.VK_DOWN];
+		boolean jump = keys[KeyEvent.VK_SPACE];
+		if (left)
+			xMod++;
+		if (right)
+			xMod--;
+		if (up)
+			yMod++;
+		if (down)
+			yMod--;
+		Random rand = new Random();
+		// xMod = rand.nextInt(4) > 1 ? rand.nextInt(2) * -1 + xMod :
+		// rand.nextInt(2) + xMod;
+		// yMod = rand.nextInt(4) > 1 ? rand.nextInt(2) * -1 + yMod :
+		// rand.nextInt(2) + yMod;
 	}
 
 	public void render(Graphics g) {
